@@ -1,1 +1,28 @@
-/* TODO Add site wide styles */
+.App {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+
+  .Navigation {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .Navigation a {
+    color: #333;
+    text-decoration: none;
+    margin-right: 20px;
+  }
+
+  .Navigation a:hover {
+    color: #555;
+  }

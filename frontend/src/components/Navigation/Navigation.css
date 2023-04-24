@@ -1,0 +1,58 @@
+.Navigation {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    list-style: none;
+    /* background-image: url('https://ssl.cdn-redfin.com/photo/45/bigphoto/896/NP23054896_0.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    width: 100%;
+    height: 300px; */
+}
+
+.Navigation h1 {
+  color: black;
+  position: absolute;
+  left: 20px;
+  top: 10px;
+}
+
+  .Navigation li {
+    margin-right: 20px;
+  }
+
+  .Navigation a {
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .Navigation a:hover {
+    color: #fff;
+    background-color: #333;
+  }
+
+  .ProfileButton {
+    display: flex;
+    align-items: center;
+  }
+
+  .ProfileButton img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
