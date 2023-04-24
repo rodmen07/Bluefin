@@ -1,22 +1,11 @@
 .Navigation {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     align-items: center;
     background-color: #f0f0f0;
     padding: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     list-style: none;
-    /* background-image: url('https://ssl.cdn-redfin.com/photo/45/bigphoto/896/NP23054896_0.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    width: 100%;
-    height: 300px; */
 }
 
 .Navigation h1 {
