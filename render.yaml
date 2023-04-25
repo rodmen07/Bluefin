@@ -1,6 +1,6 @@
 databases:
   - name: fsp-bluefin
-    user: fsp-bluefin
+    user: roderick
     plan: free
     region: oregon
 
