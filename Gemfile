@@ -37,6 +37,7 @@ gem "bootsnap", require: false
 # gem "rack-cors"
 
 gem "faker"
+gem "pry-rails"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -48,7 +49,6 @@ group :development do
   # gem "spring"
 
   gem "annotate"
-  gem "pry-rails"
   gem "better_errors"
   gem "binding_of_caller"
 end
