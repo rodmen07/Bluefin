@@ -25,7 +25,7 @@ function LoginForm() {
         else if (data) setErrors([data]);
         else setErrors([res.statusText]);
       });
-  };
+};
 
   return (
     <form onSubmit={handleSubmit}>
@@ -51,6 +51,7 @@ function LoginForm() {
         />
       </label>
       <button type="submit">Log In</button>
+      <p>By signing in you agree to Bluefin's Terms of Use and Privacy Policy</p>
     </form>
   );
 }
