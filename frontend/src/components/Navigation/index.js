@@ -12,7 +12,10 @@ function Navigation(){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
+      // Add Create Listing Component (modal)
+      // Add Update/Delete Listing Component (similar to show)
       <ProfileButton user={sessionUser} />
+
     );
   } else {
     sessionLinks = (

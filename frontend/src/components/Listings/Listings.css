@@ -10,3 +10,9 @@
     max-width: 250px;
     margin: 10px;
 }
+
+.listingPhoto {
+    width: 150px;
+    /* height: 200px; */
+    object-fit: cover;
+}
