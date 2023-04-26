@@ -1,0 +1,12 @@
+.listings-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+.listing {
+    border: 1px solid black;
+    max-width: 250px;
+    margin: 10px;
+}

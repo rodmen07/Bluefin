@@ -1,5 +1,6 @@
 import React from "react";
 import Navigation from "./components/Navigation";
+import Listings from "./components/Listings";
 import "./index.css";
 
 function App() {
@@ -10,8 +11,8 @@ function App() {
         <h1>Bluefin</h1>
         <Navigation />
         <p>Listings</p>
+        <Listings />
       </div>
-
     </>
 
   );

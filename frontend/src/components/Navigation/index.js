@@ -22,7 +22,6 @@ function Navigation(){
       </>
     );
   }
-
   return (
     <ul className="Navigation">
       <li>
