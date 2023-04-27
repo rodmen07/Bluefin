@@ -1,0 +1,42 @@
+.App {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 36px;
+  position: absolute;
+  left: 10px;
+  top: 1px;
+  color: rgb(21, 76, 128);
+}
+
+.Navigation {
+  display: flex;
+  /* justify-content: center; */
+  margin-bottom: 20px;
+}
+
+.Navigation a {
+  color: #333;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.Navigation a:hover {
+  color: #555;
+}
+
+div .background-image {
+  position: relative;
+  background-image: url("https://www.hollywoodreporter.com/wp-content/uploads/2022/09/Print-Issue-27-sty_realtors-Forster-Jones-Publicity-H-2022.jpg?w=1296&h=730&crop=1");
+  background-size: cover;
+  background-position: center;
+  width: 100%; /* width of container */
+  height: 400px; /* height of container */
+  object-position: 5px 10px;
+}
+
+p {
+  position: relative;
+}
