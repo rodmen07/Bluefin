@@ -33,19 +33,30 @@ ApplicationRecord.transaction do
     })
   end
 
-  # Create a listing for each user
+  # Create 3 listings for each user
   User.all.each do |user|
-    Listing.create!(
-      address: "#{rand(1..999)} Main St",
-      lister_id: user.id,
-      price: rand(100_000..1_000_000),
-      bed: rand(1..5),
-      baths: rand(1..3),
-      sqft: rand(500..3000),
-      created_at: Time.now,
-      updated_at: Time.now
-    )
+    3.times do
+      beds = rand(1..5)
+      if beds > 3
+        baths = rand(2..beds)
+      else
+        baths = rand(1..beds)
+      end
+      price = beds * rand(150_000..300_000)
+      Listing.create!(
+        address: "#{Faker::Address.street_address}, San Francisco, CA #{Faker::Address.zip_code}",
+        lister_id: user.id,
+        price: price,
+        bed: beds,
+        baths: baths,
+        sqft: rand(500..3000),
+        created_at: Time.now,
+        updated_at: Time.now
+      )
+    end
   end
 
   puts "Done!"
 end
+
+
