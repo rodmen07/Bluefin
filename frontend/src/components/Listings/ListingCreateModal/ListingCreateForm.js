@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import * as listingActions from "../../../store/listings"
 
-function ListingCreateForm() {
+function ListingCreateForm({onSubmit}) {
   const dispatch = useDispatch();
   const {userid} = useParams();
   const [address, setAddress] = useState("");
@@ -18,6 +18,7 @@ function ListingCreateForm() {
     e.preventDefault();
     setLister_Id(userid);
     setErrors([]);
+    onSubmit();
     return dispatch(listingActions.createListing({ address, price, bed, baths, sqft, lister_id}))
       .catch(async (res) => {
       let data;

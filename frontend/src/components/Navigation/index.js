@@ -16,13 +16,9 @@ function Navigation(){
       <NavLink exact to={`/listings/user/${sessionUser.id}`}>
         <button>My Listings</button>
       </NavLink>
-        
-        {/* Add Create Listing Component (modal)
-        Add Update/Delete Listing Component (similar to show) */}
+      <button>My Profile</button>
         <ProfileButton user={sessionUser} />
       </>
-      
-
     );
   } else {
     sessionLinks = (

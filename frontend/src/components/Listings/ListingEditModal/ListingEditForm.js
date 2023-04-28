@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import * as listingActions from "../../../store/listings"
 
-function ListingEditForm({listingId}) {
+function ListingEditForm({listingId, onSubmit}) {
   const dispatch = useDispatch();
   const listing = useSelector(listingActions.getListing(listingId))
   const {userid} = useParams();
@@ -30,13 +30,12 @@ function ListingEditForm({listingId}) {
     e.preventDefault();
     const id = listingId;
     setLister_Id(userid);
+    onSubmit();
     setErrors([]);
-    return dispatch(listingActions.updateListing({ id, address, price, bed, baths, sqft, lister_id}))
-      .then(async (res) => {
-      let data;
-        data = await res.clone().json();
-      })
+    dispatch(listingActions.updateListing({ id, address, price, bed, baths, sqft, lister_id}))
   };
+
+  
 
   return (
     <form onSubmit={handleSubmit} className="edit-listing-form">
