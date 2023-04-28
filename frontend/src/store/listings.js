@@ -2,36 +2,24 @@ import csrfFetch from "./csrf.js";
 
 // Action constants
 const SET_LISTINGS = "listings/SET_LISTINGS";
-const SET_LISTING = "listings/SET_LISTING"
 const ADD_LISTING = "listings/ADD_LISTING";
-const EDIT_LISTING = "listings/EDIT_LISTING";
 const DELETE_LISTING = "listings/DELETE_LISTING";
 
 // Action creators
 
 const setListings = (listings) => ({
     type: SET_LISTINGS,
-    listings,
-});
-
-const setListing = (listing) => ({
-    type: SET_LISTING,
-    listing,
+    listings
 });
 
 const addListing = (listing) => ({
     type: ADD_LISTING,
-    listing,
-});
-
-const editListing = (listing) => ({
-    type: EDIT_LISTING,
-    listing,
+    listing
 });
 
 const deleteListing = (listingId) => ({
     type: DELETE_LISTING,
-    listingId,
+    listingId
 });
 
 // Selectors
@@ -50,7 +38,7 @@ export const fetchListings = () => async (dispatch) => {
 export const fetchListing = (id) => async (dispatch) => {
     const res = await csrfFetch(`/api/listings/${id}`);
     const listing = await res.json();
-    dispatch(setListing(listing));
+    dispatch(addListing(listing));
 };
 
 export const createListing = (listing) => async (dispatch) => {
@@ -68,7 +56,8 @@ export const updateListing = (listing) => async (dispatch) => {
         body: JSON.stringify(listing),
     });
     const data = await res.json();
-    dispatch(editListing(data.listing));
+    console.log(data)
+    dispatch(addListing(data));
 };
 
 export const removeListing = (listingId) => async (dispatch) => {
@@ -87,9 +76,6 @@ export default function listingReducer (state = {}, action) {
         case ADD_LISTING:
             const listing = action.listing;
             return { ...state, [listing.id]: listing };
-        case EDIT_LISTING:
-            const editedListing = action.listing;
-            return { ...state, [editedListing.id]: editedListing };
         case DELETE_LISTING:
             const newState = { ...state };
             delete newState[action.listingId];

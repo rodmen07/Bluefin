@@ -1,8 +1,9 @@
 import React from "react";
 import {Route, Switch} from 'react-router-dom'
 import Navigation from "./components/Navigation";
-import Listings from "./components/Listings";
-import ListingShow from "./components/Listings/listing.js";
+import Listings from "./components/Listings/ListingsIndex";
+import ListingShow from "./components/Listings/ListingShow";
+import UsersListings from "./components/Listings/UserListingsIndex";
 import "./index.css";
 
 function App() {
@@ -19,6 +20,9 @@ function App() {
           </Route>
           <Route exact path='/listings/:id'>
             <ListingShow />
+          </Route>
+          <Route exact path='/listings/user/:userid'>
+            <UsersListings />
           </Route>
         </Switch>
       </div>

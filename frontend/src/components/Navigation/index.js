@@ -12,10 +12,13 @@ function Navigation(){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      // Add Create Listing Component (modal)
-      // Add Update/Delete Listing Component (similar to show)
-      <ProfileButton user={sessionUser} />
-
+      <>
+      <NavLink exact to={`/listings/user/${sessionUser.id}`}>
+        <button>My Listings</button>
+      </NavLink>
+      <button>My Profile</button>
+        <ProfileButton user={sessionUser} />
+      </>
     );
   } else {
     sessionLinks = (
