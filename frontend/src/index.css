@@ -37,6 +37,15 @@ div .background-image {
   object-position: 5px 10px;
 }
 
+div .search-bar {
+  position: absolute;
+  top: 30%;
+  left: 15%;
+  text-align: left;
+  color: white;
+  font-size: xx-large;
+}
+
 p {
   position: relative;
 }

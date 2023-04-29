@@ -3,15 +3,14 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
-    width: 75%;
+    width: 80%;
     margin: 0 auto;
-  }
+}
 
 .listing {
   border: 1px solid rgb(177, 177, 231);
   border-radius: 10px;
-  max-width: 25%;
-  margin: 10px;
+  margin: 5px;
   flex-basis: calc(30% - 20px); /* takes up 1/3 of the available space and accounts for the margin /
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); / adds a subtle box shadow /
   transition: transform 0.2s ease-in-out; / adds a smooth transition effect */

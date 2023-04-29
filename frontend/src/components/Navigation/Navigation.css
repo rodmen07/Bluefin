@@ -44,3 +44,27 @@
 button {
   margin: 5px;
 }
+
+.profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background-color: #b3dafa;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.profile-dropdown li {
+  color: black;
+}
+
+.profile-dropdown button {
+  
+}
+

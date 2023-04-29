@@ -12,13 +12,7 @@ function Navigation(){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <>
-      <NavLink exact to={`/listings/user/${sessionUser.id}`}>
-        <button>My Listings</button>
-      </NavLink>
-      <button>My Profile</button>
         <ProfileButton user={sessionUser} />
-      </>
     );
   } else {
     sessionLinks = (

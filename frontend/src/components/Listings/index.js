@@ -7,7 +7,6 @@ import './Listings.css';
 function Listings() {
   const dispatch = useDispatch();
   const listings = useSelector(getListings);
-  console.log(listings);
 
   useEffect(() => {
     dispatch(fetchListings());
@@ -19,7 +18,7 @@ function Listings() {
         <div key={listing.id} className="listing">
           <Link to={`/listings/${listing.id}`}>
             <img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="listing" className="listingPhoto"/>
-            <h2>Price: ${listing.price}</h2>
+            <h2>Price: {listing.price}</h2>
             <p>Bed: {listing.bed}</p>
             <p>Bath: {listing.baths}</p>
             <p>Sqft: {listing.sqft}</p>
@@ -32,3 +31,4 @@ function Listings() {
 }
 
 export default Listings;
+

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import * as sessionActions from '../../store/session';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user);
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
@@ -35,8 +37,11 @@ function ProfileButton({ user }) {
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
+          <NavLink exact to={`/listings/user/${sessionUser.id}`}>
+            <button>My Profile</button>
+          </NavLink>
+          <li>Username: {user.username}</li>
+          <li>Email: {user.email}</li>
           <li>
             <button onClick={logout}>Log Out</button>
           </li>

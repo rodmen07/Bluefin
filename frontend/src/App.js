@@ -10,7 +10,13 @@ function App() {
   return (
     <>
       <div className="App">
-        <div className ='background-image'></div>
+        <div className ='background-image'>
+          <form class="search-bar">
+          <label for="search-input">Search with Bluefin. </label>
+            <input id="search-input" type="text" name="query" placeholder="Search..."/>
+            <button type="submit">Search</button>
+          </form>
+        </div>
         <h1>Bluefin</h1>
         <Navigation />
         <Switch>
