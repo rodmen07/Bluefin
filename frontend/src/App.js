@@ -13,7 +13,7 @@ function App() {
         <div className ='background-image'>
           <form class="search-bar">
           <label for="search-input">Search with Bluefin. </label>
-            <button type="submit">Search by filter</button>
+            <button type="submit">Search by Filters</button>
           </form>
         </div>
         <h1>Bluefin</h1>

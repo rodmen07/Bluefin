@@ -17,12 +17,6 @@ h1 {
   margin-bottom: 20px;
 }
 
-.Navigation a {
-  color: #333;
-  text-decoration: none;
-  margin-right: 20px;
-}
-
 .Navigation a:hover {
   color: #555;
 }
