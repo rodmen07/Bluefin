@@ -13,15 +13,14 @@ function App() {
         <div className ='background-image'>
           <form class="search-bar">
           <label for="search-input">Search with Bluefin. </label>
-            <input id="search-input" type="text" name="query" placeholder="Search..."/>
-            <button type="submit">Search</button>
+            <button type="submit">Search by filter</button>
           </form>
         </div>
         <h1>Bluefin</h1>
         <Navigation />
         <Switch>
           <Route exact path= '/'>
-            <p>Listings</p>
+            <p>Available Listings</p>
             <Listings />
           </Route>
           <Route exact path='/listings/:id'>
