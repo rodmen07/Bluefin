@@ -36,7 +36,7 @@ ApplicationRecord.transaction do
 
   # Create 3 listings for each user
   User.all.each do |user|
-    2.times do
+    1.times do
       beds = rand(1..5)
       if beds > 3
         baths = rand(2..beds)
