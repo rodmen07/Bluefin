@@ -35,9 +35,8 @@
 .listing img {
   height: 350px;
   margin-top: 5px;
-  width: 95%; /* ensures the image fills the container /
-  height: auto; / maintains the aspect ratio of the image /
-  object-fit: cover; / crops the image to fill the container */
+  width: 95%;
+  object-position: center;
 }
 
 .listingContainer {
@@ -52,5 +51,5 @@
   width: 50%;
   height: 350px;
   margin-top: 5px;
-  object-fit: cover;
+  object-position: center;
 }

@@ -20,7 +20,8 @@ function App() {
         <Navigation />
         <Switch>
           <Route exact path= '/'>
-            <p>Available Listings</p>
+            <p>Available Listings: </p>
+            <a href="https://rodmen07.github.io/JavaScript-Project/" target="_blank" className="mortgage-calc-link">Mortgage Affordability Calculator (Click Here)</a>
             <Listings />
           </Route>
           <Route exact path='/listings/:id'>

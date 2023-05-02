@@ -11,6 +11,7 @@ class Api::ListingsController < ApplicationController
     def create
         @listing = Listing.new(listing_params)
         @listing.lister_id = current_user.id
+        @listing.photo_urls = ["https://fsp-bluefin-seeds.s3.us-west-1.amazonaws.com/assets/FSP-Bluefin-DefaultListingShowImage.jpeg"]
         if @listing.save
             render :show
         else
