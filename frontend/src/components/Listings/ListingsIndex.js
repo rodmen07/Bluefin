@@ -7,6 +7,7 @@ import './Listings.css';
 function Listings() {
   const dispatch = useDispatch();
   const listings = useSelector(getListings);
+  const sessionUser = useSelector(state => state.session.user);
 
   useEffect(() => {
     dispatch(fetchListings());
@@ -14,16 +15,17 @@ function Listings() {
 
   return (
     <div className="listings-container">
-      {listings.map(listing => (
+      {listings.map((listing, index )=> (
         <div key={listing.id} className="listing">
           <Link to={`/listings/${listing.id}`}>
-            <img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="listing" className="listingPhoto"/>
-            <h2>Price: ${listing.price}</h2>
+            <img src={listing.photoUrls} alt="listing" className="listingPhoto" />
+            <h2>Price: ${listing.price.toLocaleString()}</h2>
           </Link>
             <p>Bed: {listing.bed}</p>
             <p>Bath: {listing.baths}</p>
             <p>Sqft: {listing.sqft}</p>
             <p>{listing.address}</p>
+            {!sessionUser ? null : <button className="button">Favorite</button> }
         </div>
       ))}
     </div>

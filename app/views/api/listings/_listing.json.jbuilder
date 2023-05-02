@@ -5,4 +5,5 @@ json.extract! listing,
     :price,
     :bed,
     :baths,
-    :sqft
+    :sqft,
+    :photo_urls
