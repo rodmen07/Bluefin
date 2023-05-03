@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getListings, fetchListings } from '../../store/listings';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-import './Listings.css';
+import './ListingsIndex.css';
 
 function Listings() {
   const dispatch = useDispatch();
@@ -24,12 +24,13 @@ function Listings() {
         <div key={listing.id} className="listing">
           <Link to={`/listings/${listing.id}`}>
             <img src={listing.photoUrls} alt="listing" className="listingPhoto" />
-            <h2>Price: ${listing.price.toLocaleString()}</h2>
           </Link>
-            <p>Bed: {listing.bed}</p>
-            <p>Bath: {listing.baths}</p>
-            <p>Sqft: {listing.sqft}</p>
+          <div className="listing-info">
+            <h2>${listing.price.toLocaleString()}</h2>
+            <p>{listing.bed} Beds {listing.baths} Baths {listing.sqft.toLocaleString()} Sq. Ft.</p>
+            <p></p>
             <p>{listing.address}</p>
+          </div>
             {!sessionUser ? null : (
               <button className="button" onClick={handleFavoriteClick}>
               {favorited ? 'Favorited' : 'Favorite'}

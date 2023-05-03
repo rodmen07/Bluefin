@@ -7,12 +7,15 @@ import UsersListings from "./components/Listings/UserListingsIndex";
 import "./index.css";
 
 function App() {
+  function handleButtonClick() {
+    window.open('https://rodmen07.github.io/JavaScript-Project/', '_blank');
+  }
   return (
     <>
       <div className="App">
         <div className ='background-image'>
           <form class="search-bar">
-          <label for="search-input">Search with Bluefin. </label>
+          <label for="search-input">Search with Bluefin. <br/> Tour with a Bluefin Agent.</label>
             <button type="submit">Search by Filters</button>
           </form>
         </div>
@@ -20,8 +23,8 @@ function App() {
         <Navigation />
         <Switch>
           <Route exact path= '/'>
-            <p>Available Listings: </p>
-            <a href="https://rodmen07.github.io/JavaScript-Project/" target="_blank" className="mortgage-calc-link">Mortgage Affordability Calculator (Click Here)</a>
+            <button onClick={handleButtonClick} className="mortgage-calc-link">Mortgage Affordability Calculator </button>
+            <h2>Feed</h2>
             <Listings />
           </Route>
           <Route exact path='/listings/:id'>

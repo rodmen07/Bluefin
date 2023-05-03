@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import ListingCreateFormModal from './ListingCreateModal';
 import ListingEditFormModal from './ListingEditModal';
-import './Listings.css';
+import './ListingsIndex.css';
 import ListingDeleteFormModal from './ListingsDeleteModal';
 
 function UsersListings() {
