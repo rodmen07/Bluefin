@@ -77,6 +77,9 @@ ApplicationRecord.transaction do
       price = beds * rand(150_000..300_000)
       photo_url = photo_urls.sample
       photo_urls.delete(photo_url)
+      sqft_per_room = 150
+      total_sqft = beds * sqft_per_room + baths * sqft_per_room * 0.5
+      total_sqft += rand(0..1000)
 
       Listing.create!(
         address: "#{Faker::Address.street_address}",
@@ -84,7 +87,7 @@ ApplicationRecord.transaction do
         price: price,
         bed: beds,
         baths: baths,
-        sqft: rand(500..3000),
+        sqft: total_sqft.round,
         photo_urls: [photo_url],
         created_at: Time.now,
         updated_at: Time.now
