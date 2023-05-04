@@ -57,3 +57,8 @@
   margin-top: 5px;
   object-position: center;
 }
+
+.favorite-button {
+  cursor: pointer;
+  font-size: 24px;
+}

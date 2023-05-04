@@ -2,6 +2,9 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { getFavorites, removeFavorite, createFavorite } from "../../store/favorites";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart as emptyHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
 
 export default function ListingsIndexCard ({listing, sessionUser}) {
     const dispatch = useDispatch();
@@ -42,8 +45,8 @@ export default function ListingsIndexCard ({listing, sessionUser}) {
         <p>{listing.address}</p>
         </div>
         {!sessionUser ? null : (
-            <button className="button" onClick={handleFavoriteClick}>
-                {favorited ? 'Unfavorite' : 'Favorite' /* replace with icons */}  
+            <button className="button favorite-button" onClick={handleFavoriteClick}>
+                <FontAwesomeIcon icon={favorited ? solidHeart : emptyHeart} />
             </button>
         )}
     </div>
