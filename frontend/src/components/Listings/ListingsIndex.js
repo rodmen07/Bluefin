@@ -10,7 +10,7 @@ function Listings() {
   const sessionUser = useSelector(state => state.session.user);
   const [favorited, setFavorited] = useState(false);
 
-  const handleFavoriteClick = () => {
+  const handleFavoriteClick = (listing.id) => {
     setFavorited(!favorited);
   };
 
@@ -28,7 +28,6 @@ function Listings() {
           <div className="listing-info">
             <h2>${listing.price.toLocaleString()}</h2>
             <p>{listing.bed} Beds {listing.baths} Baths {listing.sqft.toLocaleString()} Sq. Ft.</p>
-            <p></p>
             <p>{listing.address}</p>
           </div>
             {!sessionUser ? null : (

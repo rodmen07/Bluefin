@@ -1,8 +1,4 @@
 class Api::FavoritesController < ApplicationController
-    def index
-        @favorites = Favorite.all
-    end
-
     def show
         @favorite = Favorite.find(params[:id])
     end
@@ -11,15 +7,6 @@ class Api::FavoritesController < ApplicationController
         @favorite = Favorite.new(favorites_params)
         @favorite.user_id = current_user.id
         if @favorite.save
-            render :show
-        else
-            render json: {errors: @favorite.errors.full_messages}, status: :unprocessable_entity
-        end
-    end
-
-    def update
-        @favorite = Favorite.find(params[:id])
-        if @favorite.update(favorites_params)
             render :show
         else
             render json: {errors: @favorite.errors.full_messages}, status: :unprocessable_entity
