@@ -14,7 +14,7 @@ export default function ListingsIndexCard ({listing, sessionUser}) {
         dispatch(removeFavorite(currentFavorite.id))
         setFavorited(false)
       } else {
-        dispatch(createFavorite({listings_id: listing.id})) // users_id: sessionUser.id (may be required)
+        dispatch(createFavorite({listings_id: listing.id})) 
       }
     };
 
@@ -28,13 +28,13 @@ export default function ListingsIndexCard ({listing, sessionUser}) {
     }
 
     useEffect(() => {
-        checkIfFavorited()
+        checkIfFavorited();
     }, [favorites])
 
    return  (
     <div key={listing.id} className="listing">
-        <Link to={`/listings/${listing.id}`}>
-        <img src={listing.photoUrls} alt="listing" className="listingPhoto" />
+        <Link to={`/listings/${listing.id}`}target="_blank">
+            <img src={listing.photoUrls} alt="listing" className="listingPhoto" />
         </Link>
         <div className="listing-info">
         <h2>${listing.price.toLocaleString()}</h2>
@@ -43,7 +43,7 @@ export default function ListingsIndexCard ({listing, sessionUser}) {
         </div>
         {!sessionUser ? null : (
             <button className="button" onClick={handleFavoriteClick}>
-            {favorited ? 'Unfavorite' : 'Favorite'}
+                {favorited ? 'Unfavorite' : 'Favorite' /* replace with icons */}  
             </button>
         )}
     </div>

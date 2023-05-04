@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { getListings, fetchListings } from '../../store/listings';
+import { restoreSession } from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import ListingsIndexCard from './ListingIndexCard';
 import './ListingsIndex.css';
@@ -11,7 +12,7 @@ function Listings() {
  
   useEffect(() => {
     dispatch(fetchListings());
-    // dispatch (fetchUser, create this thunk action in store/session)
+    dispatch(restoreSession());
   }, [dispatch]);
 
   return (
@@ -24,3 +25,5 @@ function Listings() {
 }
 
 export default Listings;
+
+

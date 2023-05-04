@@ -16,7 +16,7 @@ function App() {
         <div className ='background-image'>
           <form class="search-bar">
           <label for="search-input">Search with Bluefin. <br/> Tour with a Bluefin Agent.</label>
-            <button type="submit">Search by Filters</button>
+            {/* <button type="submit">Search by Filters</button> */}
           </form>
         </div>
         <h1>Bluefin</h1>
@@ -40,3 +40,5 @@ function App() {
 }
 
 export default App;
+
+// const mapsKey = process.env.REACT_APP_MAPS_API_KEY;

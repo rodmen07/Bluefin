@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import ListingCreateFormModal from './ListingCreateModal';
 import ListingEditFormModal from './ListingEditModal';
-import './ListingsIndex.css';
+import './UserListingsIndex.css';
 import ListingDeleteFormModal from './ListingsDeleteModal';
 
 function UsersListings() {
@@ -21,29 +21,25 @@ function UsersListings() {
 
   return (
     <>
-        <ListingCreateFormModal/>
-        <div className="listings-container">
-            {filteredListings.map(listing => {
-                return (
-                    <div key={listing.id} className="listing">
-                    <Link to={`/listings/${listing.id}`}>
-                        <img
-                        src={listing.photoUrls}
-                        alt="listing"
-                        className="listingPhoto"
-                        />
-                        <h2>Price: ${listing.price.toLocaleString()}</h2>
-                    </Link>
-                    <p>Bed: {listing.bed}</p>
-                    <p>Bath: {listing.baths}</p>
-                    <p>Sqft: {listing.sqft}</p>
-                    <p>{listing.address}</p>
-                    <ListingEditFormModal listingId={listing.id}/>
-                    <ListingDeleteFormModal listingId={listing.id}/>
-                    </div>
-                );
-            })}
-        </div>
+      <ListingCreateFormModal/>
+      <div className="listings-container">
+        {filteredListings.map(listing => {
+            return (
+              <div key={listing.id} className="listing">
+                <Link to={`/listings/${listing.id}`}>
+                  <img src={listing.photoUrls} alt="listing" className="listingPhoto"/>
+                </Link>
+                <div className="listing-info">
+                  <h2>${listing.price.toLocaleString()}</h2>
+                  <p>{listing.bed} Beds {listing.baths} Baths {listing.sqft.toLocaleString()} Sq. Ft.</p>
+                  <p>{listing.address}</p>
+                  <ListingEditFormModal listingId={listing.id}/>
+                  <ListingDeleteFormModal listingId={listing.id}/>
+                </div>
+              </div>
+            );
+        })}
+      </div>
     </>
   )
 }
