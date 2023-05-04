@@ -16,7 +16,7 @@
 .listing-container img {
     height: 350px;
     margin-top: 5px;
-    max-width: 75%;
+    width: 50%;
     object-position: center;
     border-radius: 10px;
 }
@@ -40,3 +40,16 @@
 .listing-container #address {
     margin-top: 10px;
 }
+
+.image-map-container {
+    margin-top: 10px;
+    display: flex;
+}
+
+#map {
+    height: 350px;
+    width: 50%;
+    border-radius: 10px;
+    margin-left: 20px;
+  }
+  

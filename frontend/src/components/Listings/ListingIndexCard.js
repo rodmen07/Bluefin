@@ -36,7 +36,7 @@ export default function ListingsIndexCard ({listing, sessionUser}) {
 
    return  (
     <div key={listing.id} className="listing">
-        <Link to={`/listings/${listing.id}`}target="_blank">
+        <Link to={`/listings/${listing.id}`}>
             <img src={listing.photoUrls} alt="listing" className="listingPhoto" />
         </Link>
         <div className="listing-info">

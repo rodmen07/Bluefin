@@ -1,24 +1,34 @@
 import { useDispatch, useSelector } from 'react-redux';
-import React, { useEffect } from 'react';
+import React, { useLayoutEffect } from 'react';
 import { fetchListing, getListing } from '../../store/listings';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import "./ListingShow.css"
-
 
 function ListingShow () {
     const dispatch = useDispatch();
     const { id } = useParams();
     const listing = useSelector(getListing(id));
 
-    useEffect(() => {
+    function initMap() {
+        var map = new window.google.maps.Map(document.getElementById('map'), {
+            center: {lat: 37.7749, lng: -122.4194},
+            zoom: 8
+        });
+    }
+
+    useLayoutEffect(() => {
         dispatch(fetchListing(id));
+        initMap();
     }, [dispatch, id])
 
     return (
         <div className="listing-container">
             {listing && (
                 <>
-                    <img src={listing.photoUrls} alt="" className="listing-show-image"/>
+                    <div className="image-map-container">
+                        <img src={listing.photoUrls} alt="" className="listing-show-image"/>
+                        <div id="map"></div>
+                    </div>
                     <div id="address">{listing?.address}</div>
                     <h2>${listing?.price.toLocaleString()} - For Sale &nbsp;&nbsp;&nbsp; {listing.bed} Beds {listing.baths} Baths {listing.sqft.toLocaleString()} Sq. Ft.</h2>
                     <h3>About this home</h3>
