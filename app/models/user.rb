@@ -14,8 +14,8 @@ class User < ApplicationRecord
 
   before_validation :ensure_session_token
 
-  has_many :listings, foreign_key: 'lister_id', dependent: :destroy
-  has_many :favorites, foreign_key: 'users_id', dependent: :destroy
+  has_many :listings, foreign_key: 'lister_id', class_name: :Listing, dependent: :destroy
+  has_many :favorites, foreign_key: 'users_id', class_name: :Favorite, dependent: :destroy
 
   def self.find_by_credentials(credential, password)
     field = credential =~ URI::MailTo::EMAIL_REGEXP ? :email : :username

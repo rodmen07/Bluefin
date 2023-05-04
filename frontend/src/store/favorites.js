@@ -1,4 +1,5 @@
 import csrfFetch from "./csrf.js";
+import {SET_CURRENT_USER} from './session.js'
 
 // Action constants
 const SET_FAVORITE = "listings/SET_FAVORITE";
@@ -6,11 +7,6 @@ const ADD_FAVORITE = "listings/ADD_FAVORITE";
 const DELETE_FAVORITE = "listings/DELETE_FAVORITE";
 
 // Action creators
-
-const setFavorite = (favorite) => ({
-    type: SET_FAVORITE,
-    favorite
-});
 
 const addFavorite = (favorite) => ({
     type: ADD_FAVORITE,
@@ -23,6 +19,7 @@ const deleteFavorite = (favoriteId) => ({
 });
 
 // Selectors
+export const getFavorites = (state) => state?.favorites ? Object.values(state.favorites) : [];
 export const getFavorite = id => state => state?.favorites ? state.favorites[id] : null;
 
 // Thunk actions/creators
@@ -39,7 +36,8 @@ export const createFavorite = (favorite) => async (dispatch) => {
         body: JSON.stringify(favorite),
     });
     const data = await res.json();
-    dispatch(addFavorite(data.favorite));
+    console.log(data);
+    dispatch(addFavorite(data));
 };
 
 export const removeFavorite = (favoriteId) => async (dispatch) => {
@@ -47,12 +45,14 @@ export const removeFavorite = (favoriteId) => async (dispatch) => {
         method: "DELETE",
     });
     const data = await res.json();
-    dispatch(deleteFavorite(data.favoriteId));
+    dispatch(deleteFavorite(data));
 };
 
 // Reducer
 export default function favoriteReducer (state = {}, action) {
     switch (action.type) {
+        case SET_CURRENT_USER:
+            return action.favorites || {};
         case SET_FAVORITE:
             return action.favorite;
         case ADD_FAVORITE:

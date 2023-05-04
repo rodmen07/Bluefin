@@ -5,7 +5,7 @@ class Api::FavoritesController < ApplicationController
 
     def create
         @favorite = Favorite.new(favorites_params)
-        @favorite.user_id = current_user.id
+        @favorite.users_id = current_user.id
         if @favorite.save
             render :show
         else
@@ -16,7 +16,7 @@ class Api::FavoritesController < ApplicationController
     def destroy
         @favorite = Favorite.find(params[:id])
         if @favorite.destroy
-            render 'show'
+            render json: params[:id]
         else
             render json: {errors: @favorite.errors.full_messages}, status: :unprocessable_entity
         end

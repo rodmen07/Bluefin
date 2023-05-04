@@ -1,12 +1,13 @@
 import csrfFetch from './csrf';
 
-const SET_CURRENT_USER = 'session/setCurrentUser';
+export const SET_CURRENT_USER = 'session/setCurrentUser';
 const REMOVE_CURRENT_USER = 'session/removeCurrentUser';
 
-const setCurrentUser = (user) => {
+const setCurrentUser = (payload) => {
   return {
     type: SET_CURRENT_USER,
-    payload: user
+    payload: payload.user, 
+    favorites: payload.favorites
   };
 };
 
@@ -32,17 +33,20 @@ export const login = ({ credential, password }) => async dispatch => {
     body: JSON.stringify({ credential, password })
   });
   const data = await response.json();
+  console.log(data);
   storeCurrentUser(data.user);
-  dispatch(setCurrentUser(data.user));
+  dispatch(setCurrentUser(data));
   return response;
 };
+
+// export const fetchUser(userId) will fetch a GET request to `api/user/${user.id}`
 
 export const restoreSession = () => async dispatch => {
   const response = await csrfFetch("/api/session");
   storeCSRFToken(response);
   const data = await response.json();
   storeCurrentUser(data.user);
-  dispatch(setCurrentUser(data.user));
+  dispatch(setCurrentUser(data));
   return response;
 };
 
