@@ -1,0 +1,61 @@
+.App {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 32px;
+  font: bold;
+  position: absolute;
+  left: 10px;
+  top: -10px;
+  color: rgb(248, 248, 248);
+  text-shadow: 1px 1px grey;
+}
+
+h2 {
+  font-size: 28px;
+  font: bold;
+  text-align: left;
+  margin-left: 15%;
+  margin-top: auto;
+}
+
+.Navigation {
+  display: flex;
+  /* justify-content: center; */
+  margin-bottom: 20px;
+}
+
+.Navigation a:hover {
+  color: #555;
+}
+
+div .background-image {
+  position: relative; 
+  background-image: url("https://www.murrayhomesinc.com/content/about/banner-custom-1.jpg");
+  background-size: cover;
+  background-position: center;
+  width: 105%; /* width of container */
+  height: 400px; /* height of container */
+  object-position: 5px 10px;
+}
+
+.background-image label {
+  font-family: Libre Franklin, sans-serif;
+  font-size: 2.25rem;
+  font-weight: 400;
+  text-shadow: 1px 1px grey;
+}
+
+div .search-bar {
+  position: absolute;
+  top: 30%;
+  left: 15%;
+  text-align: left;
+  color: white;
+}
+
+.mortgage-calc-link {
+  margin-top: 20px;
+}
