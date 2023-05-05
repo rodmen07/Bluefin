@@ -62,3 +62,15 @@
   cursor: pointer;
   font-size: 24px;
 }
+
+.user-bio {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  width: 50%;
+  margin: 0 auto;
+  padding: 5px;
+  border: 1px solid rgb(17, 37, 187);
+  border-radius: 10px;
+}

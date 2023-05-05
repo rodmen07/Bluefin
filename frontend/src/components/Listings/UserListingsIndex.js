@@ -7,6 +7,18 @@ import ListingEditFormModal from './ListingEditModal';
 import './UserListingsIndex.css';
 import ListingDeleteFormModal from './ListingsDeleteModal';
 
+function UserBio() {
+  return (
+    <>
+    <h3>User Bio</h3>
+    <img src="https://media.istockphoto.com/id/909675728/photo/businessman.jpg?s=612x612&w=0&k=20&c=AFoV-1P3FanXt4YKc37WsgPIiZvifm90_zDB1ZLVT4c="></img>
+    <div className="user-bio">
+      "Hi there! I'm a real estate enthusiast and a seasoned investor with a passion for finding the perfect home for my clients. With over a decade of experience in the industry, I have a keen eye for detail and a deep understanding of the local market trends. Whether you're looking to buy or sell a home, I'm committed to providing you with the best experience possible. From the initial consultation to the closing, I'll be with you every step of the way to ensure a smooth and stress-free transaction. In my free time, you can find me exploring new neighborhoods and checking out the latest listings. I look forward to working with you and helping you achieve your real estate goals!"
+    </div>
+    </>
+  )
+}
+
 function UsersListings() {
 
   const dispatch = useDispatch();
@@ -21,6 +33,7 @@ function UsersListings() {
 
   return (
     <>
+      <UserBio />
       <ListingCreateFormModal/>
       <div className="listings-container">
         {filteredListings.map(listing => {
