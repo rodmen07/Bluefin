@@ -1,5 +1,7 @@
 Bluefin, a Redfin clone, is a real estate brokerage application that allows users to publicly share residential listings that can be viewed and favorited by other users.
 
+https://fsp-bluefin.herokuapp.com/
+
 Link to the Wiki: https://github.com/rodmen07/FSP-Bluefin/wiki
 
 1. Hosting: Deployed on Render (Completed)
