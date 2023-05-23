@@ -3,14 +3,14 @@ import { Modal } from '../../../context/Modal';
 import { useDispatch } from "react-redux";
 import * as listingActions from "../../../store/listings"
 
-function ListingDeleteFormModal({listingId}) {
+function ListingDeleteFormModal({listingId, onDelete}) {
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
-    const [errors, setErrors] = useState([]);
+
     const handleSubmit = () => {
-        setErrors([]);
         dispatch(listingActions.removeListing(listingId));
         setShowModal(false)
+        onDelete();
     };
 
     return (

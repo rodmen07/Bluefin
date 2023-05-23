@@ -8,7 +8,7 @@ import "./index.css";
 
 function App() {
   function handleButtonClick() {
-    window.open('https://rodmen07.github.io/JavaScript-Project/', '_blank');
+    window.open('https://rodmen07.github.io/Mortgage-Affordability-Calculator/', '_blank');
   }
   return (
     <>
