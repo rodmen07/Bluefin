@@ -20,17 +20,22 @@ function ListingCreateForm({onSubmit}) {
     setErrors([]);
     onSubmit();
     return dispatch(listingActions.createListing({ address, price, bed, baths, sqft, lister_id}))
-      .catch(async (res) => {
+    .catch((error) => {
       let data;
-      try {
-        // .clone() essentially allows you to read the response body twice
-        data = await res.clone().json();
-      } catch {
-        data = await res.text(); // Will hit this case if the server is down
+      if (error.response) {
+        // The error has a response object
+        if (error.response.data?.errors) {
+          // Handle specific error format
+          data = error.response.data.errors;
+        } else {
+          // Handle generic error message
+          data = error.response.data || error.response.statusText;
+        }
+      } else {
+        // Handle server or network errors
+        data = error.message || "Something went wrong";
       }
-      if (data?.errors) setErrors(data.errors);
-      else if (data) setErrors([data]);
-      else setErrors([res.statusText]);
+      setErrors(Array.isArray(data) ? data : [data]);
     });
   };
 
