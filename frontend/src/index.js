@@ -9,6 +9,7 @@ import configureStore from "./store";
 import csrfFetch from "./store/csrf";
 import * as sessionActions from "./store/session";
 import * as listingActions from "./store/listings";
+import { Wrapper } from "@googlemaps/react-wrapper";
 
 const store = configureStore();
 
@@ -21,6 +22,7 @@ if (process.env.NODE_ENV !== "production") {
 
 function Root() {
   return (
+    <Wrapper apiKey={process.env.REACT_APP_MAPS_API_KEY}>
     <ModalProvider>
       <Provider store={store}>
         <BrowserRouter>
@@ -28,6 +30,7 @@ function Root() {
         </BrowserRouter>
       </Provider>
     </ModalProvider>
+    </Wrapper>
   );
 }
 
