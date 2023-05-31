@@ -17,8 +17,8 @@ Bluefin has been developed using the following technologies:
 - **Frontend**: React.js, Redux, HTML, CSS, JavaScript
 - **Backend**: Ruby on Rails
 - **Database**: PostgreSQL
-- **Deployment**: Render
-- **Other Tools**: Git, GitHub, Heroku
+- **Deployment**: Heroku
+- **Other Tools**: Git, GitHub 
 
 ## Key Features
 
