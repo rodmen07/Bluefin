@@ -22,15 +22,15 @@ if (process.env.NODE_ENV !== "production") {
 
 function Root() {
   return (
-    <Wrapper apiKey={process.env.REACT_APP_MAPS_API_KEY}>
     <ModalProvider>
       <Provider store={store}>
         <BrowserRouter>
+          <Wrapper apiKey={process.env.REACT_APP_MAPS_API_KEY}>
           <App />
+          </Wrapper>
         </BrowserRouter>
       </Provider>
     </ModalProvider>
-    </Wrapper>
   );
 }
 

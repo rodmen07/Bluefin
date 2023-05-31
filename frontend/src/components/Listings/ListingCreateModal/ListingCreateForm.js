@@ -45,19 +45,19 @@ export default function ListingCreateForm({onSubmit}) {
         {errors.map(error => <li key={error}>{error}</li>)}
       </ul>
       <label> Address
-        <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} required />
+        <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} maxLength={50} required />
       </label>
       <label> Price
-        <input type="float" value={price} onChange={(e) => setPrice(e.target.value)} required />
+        <input type="float" value={price} onChange={(e) => setPrice(e.target.value)} min={1} required />
       </label>
       <label> Bed
-        <input type="number" value={bed} onChange={(e) => setBed(e.target.value)} required />
+        <input type="number" value={bed} onChange={(e) => setBed(e.target.value)} min={1} required />
       </label>
       <label> Baths
-        <input type="number" value={baths} onChange={(e) => setBaths(e.target.value)} required />
+        <input type="number" value={baths} onChange={(e) => setBaths(e.target.value)} min={1} required />
       </label>
       <label> Sqft
-        <input type="number" value={sqft} onChange={(e) => setSqft(e.target.value)} required />
+        <input type="number" value={sqft} onChange={(e) => setSqft(e.target.value)} min={1} required />
       </label>
       <button type="submit">Submit</button>
     </form>

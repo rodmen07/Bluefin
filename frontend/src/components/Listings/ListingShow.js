@@ -1,25 +1,49 @@
 import { useDispatch, useSelector } from 'react-redux';
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect } from 'react';
 import { fetchListing, getListing } from '../../store/listings';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import "./ListingShow.css"
 
-function ListingShow () {
+export default function ListingShow () {
     const dispatch = useDispatch();
     const { id } = useParams();
     const listing = useSelector(getListing(id));
 
-    function initMap() {
-        var map = new window.google.maps.Map(document.getElementById('map'), {
-            center: {lat: 37.7749, lng: -122.4194},
-            zoom: 14
-        });
-    }
-
-    useLayoutEffect(() => {
+    useEffect(() => {
         dispatch(fetchListing(id));
+
+    }, [dispatch, id]);
+
+    useEffect(() => {
+        function initMap() {
+            const cities = [
+                { name: 'New York', lat: 40.7128, lng: -74.0060 },
+                { name: 'London', lat: 51.5074, lng: -0.1278 },
+                { name: 'Tokyo', lat: 35.6895, lng: 139.6917 },
+                { name: 'San Francisco', lat: 37.7749, lng: -122.4194 },
+                { name: 'Los Angeles', lat: 34.0522, lng: -118.2437 }
+            ];
+
+            const randomCity = cities[Math.floor(Math.random() * cities.length)];
+
+            const mapElement = document.getElementById('map');
+            if (mapElement) {
+                const map = new window.google.maps.Map(mapElement, {
+                center: { lat: randomCity.lat, lng: randomCity.lng },
+                zoom: 18,
+                });
+
+                const marker = new window.google.maps.Marker({
+                position: { lat: randomCity.lat, lng: randomCity.lng },
+                map: map,
+                title: randomCity.name,
+                });
+            }
+        }
+
         initMap();
-    }, [dispatch, id])
+      }, [listing]);
+
 
     return (
         <div className="listing-container">
@@ -39,5 +63,3 @@ function ListingShow () {
 
     )
 }
-
-export default ListingShow;
