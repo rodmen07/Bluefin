@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import * as listingActions from "../../../store/listings";
 
-function ListingCreateForm({onSubmit}) {
+export default function ListingCreateForm({onSubmit}) {
   const dispatch = useDispatch();
   const {userid} = useParams();
   const [address, setAddress] = useState("");
@@ -44,54 +44,22 @@ function ListingCreateForm({onSubmit}) {
       <ul>
         {errors.map(error => <li key={error}>{error}</li>)}
       </ul>
-      <label>
-        Address
-        <input
-          type="text"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-          required
-        />
+      <label> Address
+        <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} required />
       </label>
-      <label>
-        Price
-        <input
-          type="float"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          required
-        />
+      <label> Price
+        <input type="float" value={price} onChange={(e) => setPrice(e.target.value)} required />
       </label>
-      <label>
-        Bed
-        <input
-          type="number"
-          value={bed}
-          onChange={(e) => setBed(e.target.value)}
-          required
-        />
+      <label> Bed
+        <input type="number" value={bed} onChange={(e) => setBed(e.target.value)} required />
       </label>
-      <label>
-        Baths
-        <input
-          type="number"
-          value={baths}
-          onChange={(e) => setBaths(e.target.value)}
-          required
-        />
+      <label> Baths
+        <input type="number" value={baths} onChange={(e) => setBaths(e.target.value)} required />
       </label>
-      <label>
-        Sqft
-        <input
-          type="number"
-          value={sqft}
-          onChange={(e) => setSqft(e.target.value)}
-          required
-        />
+      <label> Sqft
+        <input type="number" value={sqft} onChange={(e) => setSqft(e.target.value)} required />
       </label>
       <button type="submit">Submit</button>
     </form>
   );
 }
-
-export default ListingCreateForm;

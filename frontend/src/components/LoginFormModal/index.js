@@ -4,7 +4,7 @@ import LoginForm from './LoginForm';
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 
-function LoginFormModal() {
+export default function LoginFormModal() {
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
@@ -25,5 +25,3 @@ function LoginFormModal() {
     </>
   );
 }
-
-export default LoginFormModal;
