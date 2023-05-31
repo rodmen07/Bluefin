@@ -15,13 +15,11 @@ export default function UsersListings() {
 
   useEffect(() => {
     dispatch(fetchListings());
+    setListingsUpdated(false);
   }, [dispatch, listingsUpdated]);
 
-  useEffect(() => {
-  }, [listings, listingsUpdated]);
-
   const handleListingsUpdate = () => {
-    setListingsUpdated(prevState => !prevState)
+    setListingsUpdated(true);
   };
 
   const filteredListings = listings.filter(listing => listing.listerId == userid);
