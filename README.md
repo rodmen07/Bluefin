@@ -32,11 +32,6 @@ Bluefin provides users with the ability to sign up, sign in, and log out. Additi
 - Ensuring a smooth transition between guest/demo login and user-specific functionality.
 
 **Brilliant Solutions:**
-## About
-
-This is an example `ApplicationController` class for a Rails API project. The `ApplicationController` serves as a base controller that other controllers in the application can inherit from. It includes various modules and defines common behavior and configurations for handling requests, protecting against security vulnerabilities, and managing user sessions.
-
-## Features
 
 - **Request Forgery Protection:** The `ApplicationController` includes the `ActionController::RequestForgeryProtection` module, which provides protection against cross-site request forgery (CSRF) attacks. This module generates and verifies authenticity tokens in forms to prevent unauthorized requests.
 
@@ -51,6 +46,8 @@ This is an example `ApplicationController` class for a Rails API project. The `A
 - **Authorization:** The `require_logged_in` method is a helper method that checks if a user is logged in by calling `current_user`. If no user is found, it returns an "Unauthorized" response.
 
 ```ruby
+# Backend controller actions pertaining to user authentication/login
+
 class ApplicationController < ActionController::API
   include ActionController::RequestForgeryProtection
 
@@ -113,23 +110,27 @@ end
 ```javascript
 // React component for guest/demo login
 
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { login } from '../actions/sessionActions';
-
-const DemoLoginButton = () => {
+export default function LoginFormModal() {
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
-  const handleDemoLogin = () => {
-    dispatch(login({ email: 'demo@example.com', password: 'password' }));
-  };
+  const demoLogin = (e) => {
+    e.preventDefault();
+    return dispatch(sessionActions.login({ credential: "demo@user.io", password: "password" }))
+  }
 
   return (
-    <button onClick={handleDemoLogin}>Demo Login</button>
+    <>
+      <button onClick={() => setShowModal(true)}>Log In</button>
+      <button onClick={(e) => demoLogin(e)}>Log In as Demo User</button>
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <LoginForm />
+        </Modal>
+      )}
+    </>
   );
-};
-
-export default DemoLoginButton;
+}
 ```
 
 ### 2. Listings
@@ -143,60 +144,136 @@ Logged-in users can create listings, view individual listings, and edit/delete t
 
 **Brilliant Solutions:**
 
-```ruby
-# Listing creation in Ruby on Rails
+```javascript
+ // Listing creation in JavaScript
 
-class ListingsController < ApplicationController
-  def create
-    @listing = current_user.listings.new(listing_params)
+// Thunk actions/creators
 
-    if @listing.save
-      render json: @listing
-    else
-      render json: @listing.errors.full_messages, status: :unprocessable_entity
-    end
-  end
+export const fetchListings = () => async (dispatch) => {
+    const res = await csrfFetch("/api/listings");
+    const listings = await res.json();
+    dispatch(setListings(listings));
+};
 
-  # ...
-end
+export const fetchListing = (id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/listings/${id}`);
+    const listing = await res.json();
+    dispatch(addListing(listing));
+};
+
+export const createListing = (listing) => async (dispatch) => {
+    const res = await csrfFetch("/api/listings", {
+        method: "POST",
+        body: JSON.stringify(listing),
+    });
+    const data = await res.json();
+    dispatch(addListing(data.listing));
+};
+
+export const updateListing = (listing) => async (dispatch) => {
+    const res = await csrfFetch(`/api/listings/${listing.id}`, {
+        method: "PUT",
+        body: JSON.stringify(listing),
+    });
+    const data = await res.json();
+    console.log(data)
+    dispatch(addListing(data));
+};
+
+export const removeListing = (listingId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/listings/${listingId}`, {
+        method: "DELETE",
+    });
+    const data = await res.json();
+    dispatch(deleteListing(data.listingId));
+};
+
+// Reducer
+export default function listingReducer (state = {}, action) {
+    switch (action.type) {
+        case SET_LISTINGS:
+            return action.listings;
+        case ADD_LISTING:
+            const listing = action.listing;
+            return { ...state, [listing.id]: listing };
+        case DELETE_LISTING:
+            const newState = { ...state };
+            delete newState[action.listingId];
+            return newState;
+        default:
+            return state;
+    }
+}
 ```
 
 ```javascript
-// React component for editing a listing
+// React component for creating a listing
 
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { updateListing } from '../actions/listingActions';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import * as listingActions from "../../../store/listings";
 
-const EditListingForm = ({ listing }) => {
+export default function ListingCreateForm({onSubmit}) {
   const dispatch = useDispatch();
-  const [title, setTitle] = useState(listing.title);
-  const [description, setDescription] = useState(listing.description);
+  const {userid} = useParams();
+  const [address, setAddress] = useState("");
+  const [price, setPrice] = useState(0);
+  const [bed, setBed] = useState(0);
+  const [baths, setBaths] = useState(0);
+  const [sqft, setSqft] = useState(0);
+  const [lister_id, setLister_Id] = useState(0);
+  const [errors, setErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateListing(listing.id, { title, description }));
+    setLister_Id(userid);
+    setErrors([]);
+    onSubmit();
+    return dispatch(listingActions.createListing({ address, price, bed, baths, sqft, lister_id}))
+    .catch((error) => {
+      let data;
+      if (error.response) {
+        // The error has a response object
+        if (error.response.data?.errors) {
+          // Handle specific error format
+          data = error.response.data.errors;
+        } else {
+          // Handle generic error message
+          data = error.response.data || error.response.statusText;
+        }
+      } else {
+        // Handle server or network errors
+        data = error.message || "Something went wrong";
+      }
+      setErrors(Array.isArray(data) ? data : [data]);
+    });
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={title}
-        onChange={(e) => setTitle(e.target.value
-
-)}
-      />
-      <textarea
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      ></textarea>
-      <button type="submit">Update Listing</button>
+    <form onSubmit={handleSubmit} className="create-listing-form">
+      <ul>
+        {errors.map(error => <li key={error}>{error}</li>)}
+      </ul>
+      <label> Address
+        <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} required />
+      </label>
+      <label> Price
+        <input type="float" value={price} onChange={(e) => setPrice(e.target.value)} required />
+      </label>
+      <label> Bed
+        <input type="number" value={bed} onChange={(e) => setBed(e.target.value)} required />
+      </label>
+      <label> Baths
+        <input type="number" value={baths} onChange={(e) => setBaths(e.target.value)} required />
+      </label>
+      <label> Sqft
+        <input type="number" value={sqft} onChange={(e) => setSqft(e.target.value)} required />
+      </label>
+      <button type="submit">Submit</button>
     </form>
   );
-};
-
-export default EditListingForm;
+}
 ```
 
 ## Conclusion
