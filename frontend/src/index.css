@@ -1,9 +1,9 @@
 body {
   margin: 0;
+  font-family: Libre Franklin, sans-serif;
 }
 
 .App {
-  font-family: Arial, sans-serif;
   text-align: center;
 }
 

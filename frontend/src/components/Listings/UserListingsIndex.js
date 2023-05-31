@@ -18,7 +18,7 @@ export default function UsersListings() {
   }, [dispatch, listingsUpdated]);
 
   useEffect(() => {
-  }, [listings]);
+  }, [listings, listingsUpdated]);
 
   const handleListingsUpdate = () => {
     setListingsUpdated(prevState => !prevState)

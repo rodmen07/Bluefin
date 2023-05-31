@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../../context/Modal';
 import ListingCreateForm from './ListingCreateForm';
 
-function ListingCreateFormModal( {onListingCreate} ) {
+export default function ListingCreateFormModal( {onListingCreate} ) {
   const [showModal, setShowModal] = useState(false);
 
   const closeModal = () => {
@@ -25,5 +25,3 @@ function ListingCreateFormModal( {onListingCreate} ) {
     </>
   );
 }
-
-export default ListingCreateFormModal;

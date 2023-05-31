@@ -3,7 +3,7 @@ import { Modal } from '../../../context/Modal';
 import { useDispatch } from "react-redux";
 import * as listingActions from "../../../store/listings"
 
-function ListingDeleteFormModal({listingId, onDelete}) {
+export default function ListingDeleteFormModal({listingId, onDelete}) {
     const dispatch = useDispatch();
     const [showModal, setShowModal] = useState(false);
 
@@ -26,5 +26,3 @@ function ListingDeleteFormModal({listingId, onDelete}) {
         </>
     );
 }
-
-export default ListingDeleteFormModal;
