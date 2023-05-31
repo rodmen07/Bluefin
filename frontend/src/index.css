@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 .App {
   font-family: Arial, sans-serif;
   text-align: center;
@@ -32,11 +36,11 @@ h2 {
 }
 
 div .background-image {
-  position: relative; 
+  position: relative;
   background-image: url("https://www.murrayhomesinc.com/content/about/banner-custom-1.jpg");
   background-size: cover;
   background-position: center;
-  width: 105%; /* width of container */
+  width: 100%; /* width of container */
   height: 400px; /* height of container */
   object-position: 5px 10px;
 }

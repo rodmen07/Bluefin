@@ -42,8 +42,8 @@ function Navigation(){
       <li>
         <NavLink exact to="/">Home</NavLink>
         {sessionLinks}
-        <a href="https://www.linkedin.com/in/roderick-mendoza-9133b7b5/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="50" height="50"/></a>
-        <a href="https://github.com/rodmen07"><img src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png" width="50" height="50"/></a>
+        <a href="https://www.linkedin.com/in/roderick-mendoza-9133b7b5/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png"/></a>
+        <a href="https://github.com/rodmen07"><img src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png"/></a>
       </li>
     </ul>
   );
