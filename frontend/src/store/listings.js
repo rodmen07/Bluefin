@@ -56,7 +56,6 @@ export const updateListing = (listing) => async (dispatch) => {
         body: JSON.stringify(listing),
     });
     const data = await res.json();
-    console.log(data)
     dispatch(addListing(data));
 };
 
