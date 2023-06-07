@@ -24,7 +24,7 @@ function ListingEditForm({listingId, onSubmit}) {
         setSqft(listing.sqft);
         setLister_Id(listing.lister_id);
     }
-  }, [listing] ) 
+  }, [listing] )
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,57 +35,27 @@ function ListingEditForm({listingId, onSubmit}) {
     dispatch(listingActions.updateListing({ id, address, price, bed, baths, sqft, lister_id}))
   };
 
-  
+
 
   return (
     <form onSubmit={handleSubmit} className="edit-listing-form">
       <ul>
         {errors.map(error => <li key={error}>{error}</li>)}
       </ul>
-      <label>
-        Address
-        <input
-          type="text"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-          required
-        />
+      <label> Address
+        <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} maxLength={50} required />
       </label>
-      <label>
-        Price
-        <input
-          type="float"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-          required
-        />
+      <label> Price
+        <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} min={1} max ={1000000000} required />
       </label>
-      <label>
-        Bed
-        <input
-          type="integer"
-          value={bed}
-          onChange={(e) => setBed(e.target.value)}
-          required
-        />
+      <label> Bed
+        <input type="number" value={bed} onChange={(e) => setBed(e.target.value)} min={1} max={20}required />
       </label>
-      <label>
-        Baths
-        <input
-          type="integer"
-          value={baths}
-          onChange={(e) => setBaths(e.target.value)}
-          required
-        />
+      <label> Baths
+        <input type="number" value={baths} onChange={(e) => setBaths(e.target.value)} min={1} max={20} required />
       </label>
-      <label>
-        Sqft
-        <input
-          type="integer"
-          value={sqft}
-          onChange={(e) => setSqft(e.target.value)}
-          required
-        />
+      <label> Sqft
+        <input type="number" value={sqft} onChange={(e) => setSqft(e.target.value)} min={1} max={100000} required />
       </label>
       <button type="submit">Submit</button>
     </form>

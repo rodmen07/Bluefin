@@ -48,16 +48,16 @@ export default function ListingCreateForm({onSubmit}) {
         <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} maxLength={50} required />
       </label>
       <label> Price
-        <input type="float" value={price} onChange={(e) => setPrice(e.target.value)} min={1} required />
+        <input type="number" value={price} onChange={(e) => setPrice(e.target.value)} min={1} max ={1000000000} required />
       </label>
       <label> Bed
-        <input type="number" value={bed} onChange={(e) => setBed(e.target.value)} min={1} required />
+        <input type="number" value={bed} onChange={(e) => setBed(e.target.value)} min={1} max={20}required />
       </label>
       <label> Baths
-        <input type="number" value={baths} onChange={(e) => setBaths(e.target.value)} min={1} required />
+        <input type="number" value={baths} onChange={(e) => setBaths(e.target.value)} min={1} max={20} required />
       </label>
       <label> Sqft
-        <input type="number" value={sqft} onChange={(e) => setSqft(e.target.value)} min={1} required />
+        <input type="number" value={sqft} onChange={(e) => setSqft(e.target.value)} min={1} max={100000} required />
       </label>
       <button type="submit">Submit</button>
     </form>

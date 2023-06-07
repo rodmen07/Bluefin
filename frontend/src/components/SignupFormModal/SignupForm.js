@@ -43,10 +43,12 @@ export default function SignupForm() {
       <label>
         Email
         <input
-          type="text"
+          type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          minLength={3}
+          maxLength={30}
         />
       </label>
       <label>
@@ -56,6 +58,8 @@ export default function SignupForm() {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
+          minLength={3}
+          maxLength={255}
         />
       </label>
       <label>
@@ -65,6 +69,8 @@ export default function SignupForm() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          minLength={6}
+          maxLength={255}
         />
       </label>
       <label>
@@ -74,6 +80,8 @@ export default function SignupForm() {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
+          minLength={6}
+          maxLength={255}
         />
       </label>
       <button type="submit">Sign Up</button>
