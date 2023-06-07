@@ -1,35 +1,38 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
+import { useHistory } from "react-router-dom";
 import './SignupForm.css';
 
-function SignupForm() {
+export default function SignupForm() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
-        .catch(async (res) => {
-        let data;
-        try {
-          // .clone() essentially allows you to read the response body twice
-          data = await res.clone().json();
-        } catch {
-          data = await res.text(); // Will hit this case if the server is down
+      const res = await dispatch(sessionActions.signup({ email, username, password }));
+      if (res.errors) {
+        setErrors(res.errors);
+      } else {
+        // Successful signup, now log in the user
+        const loginRes = await dispatch(sessionActions.login({ credential: email, password }));
+        if (loginRes.errors) {
+          setErrors(loginRes.errors);
+        } else {
+          // Redirect the user to the home page after successful login
+          history.push('/');
         }
-        if (data?.errors) setErrors(data.errors);
-        else if (data) setErrors([data]);
-        else setErrors([res.statusText]);
-      });
+      }
+    } else {
+      setErrors(['Confirm Password field must be the same as the Password field']);
     }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
   };
 
   return (
@@ -78,5 +81,3 @@ function SignupForm() {
     </form>
   );
 }
-
-export default SignupForm;
