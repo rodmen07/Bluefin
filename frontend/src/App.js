@@ -4,6 +4,7 @@ import Navigation from "./components/Navigation";
 import Listings from "./components/Listings/ListingsIndex";
 import ListingShow from "./components/Listings/ListingShow";
 import UsersListings from "./components/Listings/UserListingsIndex";
+import SearchFormModal from "./components/SearchModal";
 import "./index.css";
 
 function App() {
@@ -16,7 +17,6 @@ function App() {
         <div className ='background-image'>
           <form class="search-bar">
           <label for="search-input">Search with Bluefin. <br/> Tour with a Bluefin Agent.</label>
-            {/* <button type="submit">Search by Filters</button> */}
           </form>
         </div>
         <h1>Bluefin</h1>
@@ -24,6 +24,7 @@ function App() {
         <Switch>
           <Route exact path= '/'>
             <button onClick={handleButtonClick} className="mortgage-calc-link">Mortgage Affordability Calculator </button>
+            {/* <SearchFormModal /> TODO: Implement Search*/}
             <h2>Feed</h2>
             <Listings />
           </Route>

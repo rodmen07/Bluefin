@@ -5,16 +5,21 @@ import { getListings, fetchListings } from '../../store/listings';
 import ListingCreateFormModal from './ListingCreateModal';
 import ListingEditFormModal from './ListingEditModal';
 import ListingDeleteFormModal from './ListingsDeleteModal';
+import { restoreSession } from '../../store/session';
 import './UserListingsIndex.css';
+import ListingsIndexCard from './ListingIndexCard';
 
 export default function UsersListings() {
   const dispatch = useDispatch();
   const listings = useSelector(getListings);
   const { userid } = useParams();
   const [listingsUpdated, setListingsUpdated] = useState(false);
+  const favorites = Object.values(useSelector(state => state.favorites));
+  const sessionUser = useSelector(state => state.session.user);
 
   useEffect(() => {
     dispatch(fetchListings());
+    dispatch(restoreSession());
     setListingsUpdated(false);
   }, [dispatch, listingsUpdated]);
 
@@ -23,12 +28,15 @@ export default function UsersListings() {
   };
 
   const filteredListings = listings.filter(listing => listing.listerId == userid);
+  const favoritedListings = listings.filter(listing => favorites.some(favorite => favorite.listingsId === listing.id));
 
+  console.log(favoritedListings);
   return (
     <>
+      <h1 className="my-listings-header">My Listings</h1>
       <ListingCreateFormModal onListingCreate={handleListingsUpdate}/>
       <div className="listings-container">
-        {filteredListings.map(listing => {
+        {filteredListings.reverse().map(listing => {
           return (
             <div key={listing.id} className="listing">
               <Link to={`/listings/${listing.id}`}>
@@ -41,6 +49,16 @@ export default function UsersListings() {
                 <ListingEditFormModal listingId={listing.id} />
                 <ListingDeleteFormModal listingId={listing.id} onDelete={handleListingsUpdate}/>
               </div>
+            </div>
+            );
+          })}
+      </div>
+      <h1 className="my-listings-header">My Favorites</h1>
+      <div className="listings-container">
+        {favoritedListings.reverse().map(listing => {
+          return (
+            <div key={listing.id} className="listing">
+              <ListingsIndexCard listing={listing} sessionUser={sessionUser}/>
             </div>
             );
           })}

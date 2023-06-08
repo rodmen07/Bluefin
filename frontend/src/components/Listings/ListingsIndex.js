@@ -5,11 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import ListingsIndexCard from './ListingIndexCard';
 import './ListingsIndex.css';
 
-function Listings() {
+export default function Listings() {
   const dispatch = useDispatch();
   const listings = useSelector(getListings);
   const sessionUser = useSelector(state => state.session.user);
- 
+
   useEffect(() => {
     dispatch(fetchListings());
     dispatch(restoreSession());
@@ -23,7 +23,3 @@ function Listings() {
     </div>
   );
 }
-
-export default Listings;
-
-
