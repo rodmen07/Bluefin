@@ -29,8 +29,7 @@ export default function UsersListings() {
 
   const filteredListings = listings.filter(listing => listing.listerId == userid);
   const favoritedListings = listings.filter(listing => favorites.some(favorite => favorite.listingsId === listing.id));
-
-  console.log(favoritedListings);
+  
   return (
     <>
       <h1 className="my-listings-header">My Listings</h1>
