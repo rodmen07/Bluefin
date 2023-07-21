@@ -287,4 +287,3 @@ To run a local version, download the repository, and install dependencies:
 2) Initialize PostgreSQL and run ```rails start``` or ```rails s``` in the root folder to start the backend/rails application.
 3) Run ```npm start``` in the frontend folder. This should open the application through localhost:3000 in default browser.
 
-Test
