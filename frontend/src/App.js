@@ -24,7 +24,7 @@ function App() {
         <Switch>
           <Route exact path= '/'>
             <button onClick={handleButtonClick} className="mortgage-calc-link">Mortgage Affordability Calculator </button>
-            {/* <SearchFormModal /> TODO: Implement Search*/}
+            <SearchFormModal />
             <h2>Feed</h2>
             <Listings />
           </Route>

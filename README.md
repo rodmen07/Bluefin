@@ -18,7 +18,7 @@ Bluefin has been developed using the following technologies:
 - **Backend**: Ruby on Rails
 - **Database**: PostgreSQL
 - **Deployment**: Heroku
-- **Other Tools**: Git, GitHub 
+- **Other Tools**: Git, GitHub
 
 ## Key Features
 
@@ -57,7 +57,7 @@ class ApplicationController < ActionController::API
 
   protect_from_forgery with: :exception
   before_action :snake_case_params, :attach_authenticity_token
-  
+
   def current_user
     @current_user ||= User.find_by(session_token: session[:session_token])
   end
@@ -281,3 +281,8 @@ export default function ListingCreateForm({onSubmit}) {
 Bluefin showcases the use of modern web technologies such as React.js, Redux, Ruby on Rails, and PostgreSQL to create a real estate brokerage application with various features. The implementation of new account creation, login functionality, and guest/demo login demonstrates secure user authentication. The ability to create, view, edit, and delete listings highlights the application's versatility and user-centric design. Further development is underway, including the dashboard and profile features, as well as search listings functionality.
 
 Feel free to explore the live site and refer to the wiki for more information on Bluefin's development.
+
+To run a local version, download the repository, and install dependencies:
+1) Run ```npm install`````` within the root and frontend folders.
+2) Initialize PostgreSQL and run ```rails start``` or ```rails s``` in the root folder to start the backend/rails application.
+3) Run ```npm start``` in the frontend folder. This should open the application through localhost:3000 in default browser.
