@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function SearchForm({ onSearch }) {
+export default function SearchForm({ onSubmit }) {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1500000);
   const [minBeds, setMinBeds] = useState(0);
@@ -20,7 +20,7 @@ export default function SearchForm({ onSearch }) {
       maxBaths,
       favoritedOnly,
     };
-    // onSearch(searchParams); TODO: implement onSearch
+    onSubmit();
   };
 
   const handleMinPriceChange = (event) => {

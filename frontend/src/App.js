@@ -5,6 +5,7 @@ import Listings from "./components/Listings/ListingsIndex";
 import ListingShow from "./components/Listings/ListingShow";
 import UsersListings from "./components/Listings/UserListingsIndex";
 import SearchFormModal from "./components/SearchModal";
+import FilteredListings from "./components/Listings/FilteredListings";
 import "./index.css";
 
 function App() {
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route exact path='/listings/user/:userid'>
             <UsersListings />
+          </Route>
+          <Route exact path='/listings/search/:searchParams'>
+            <FilteredListings />
           </Route>
         </Switch>
       </div>

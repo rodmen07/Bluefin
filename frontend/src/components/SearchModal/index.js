@@ -4,13 +4,16 @@ import SearchForm from './SearchForm';
 
 export default function SignupFormModal() {
   const [showModal, setShowModal] = useState(false);
+  const closeModal = () => {
+    setShowModal(false);
+  }
 
   return (
     <>
       <button onClick={() => setShowModal(true)}>Search by Filters</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <SearchForm />
+          <SearchForm onSubmit={closeModal}/>
         </Modal>
       )}
     </>
