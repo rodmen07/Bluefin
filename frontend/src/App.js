@@ -36,7 +36,7 @@ function App() {
             <UsersListings />
           </Route>
           <Route exact path='/listings/search/:searchParams'>
-            <FilteredListings />
+            <Listings />
           </Route>
         </Switch>
       </div>

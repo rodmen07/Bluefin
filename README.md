@@ -291,3 +291,4 @@ To run a local version, download the repository, and install dependencies:
 - Implement search by filters.
   -Build out FilteredListings component (refer to ListingsIndex/UserListingsIndex)
   -Modify handleSubmit function within SearchForm to navigate to '/listings/search/:searchParams' to display search results (refer to Home/My Profile Button).
+    -Need to add all search params to the navigation link.

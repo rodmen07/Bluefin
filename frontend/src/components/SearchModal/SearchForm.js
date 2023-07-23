@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 export default function SearchForm({ onSubmit }) {
   const [minPrice, setMinPrice] = useState(0);
@@ -11,15 +12,6 @@ export default function SearchForm({ onSubmit }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const searchParams = {
-      minPrice,
-      maxPrice,
-      minBeds,
-      maxBeds,
-      minBaths,
-      maxBaths,
-      favoritedOnly,
-    };
     onSubmit();
   };
 
@@ -162,7 +154,9 @@ export default function SearchForm({ onSubmit }) {
         />
       </label>
       <br />
+      <NavLink to={`/listings/search/${(favoritedOnly)}`}>
       <button type="submit">Search</button>
+      </NavLink>
     </form>
   );
 }
