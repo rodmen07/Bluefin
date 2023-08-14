@@ -43,7 +43,7 @@ function Navigation(){
       <li>
         <NavLink exact to="/">Home</NavLink>
         {sessionLinks}
-        <a href="https://www.linkedin.com/in/roderick-mendoza-9133b7b5/"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png"/></a>
+        <a href="https://www.linkedin.com/in/roderick-mendoza-9133b7b5/"><img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/circle-linkedin-512.png"/></a>
         <a href="https://github.com/rodmen07"><img src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png"/></a>
       </li>
     </ul>
